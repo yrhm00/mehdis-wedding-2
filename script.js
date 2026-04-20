@@ -9,12 +9,12 @@
    Firebase Console → Paramètres du projet → Vos applications
    ---------------------------------------------------------- */
 const firebaseConfig = {
-  apiKey:            "VOTRE_API_KEY",
-  authDomain:        "VOTRE_PROJECT_ID.firebaseapp.com",
-  projectId:         "VOTRE_PROJECT_ID",
-  storageBucket:     "VOTRE_PROJECT_ID.appspot.com",
-  messagingSenderId: "VOTRE_MESSAGING_SENDER_ID",
-  appId:             "VOTRE_APP_ID"
+  apiKey:            "AIzaSyCsE-MXvCNXyunuAwPjqU9vnQ_EU_SEWg8",
+  authDomain:        "mehdi-6a0b0.firebaseapp.com",
+  projectId:         "mehdi-6a0b0",
+  storageBucket:     "mehdi-6a0b0.appspot.com",
+  messagingSenderId: "411873187129",
+  appId:             "1:411873187129:web:7cc3e78581e6640173c4e8"
 };
 
 const isFirebaseConfigured = !Object.values(firebaseConfig).some(function(value) {
