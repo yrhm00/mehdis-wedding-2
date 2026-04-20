@@ -960,9 +960,16 @@ const firebaseConfig = {
   appId:             "VOTRE_APP_ID"
 };
 
+const isFirebaseConfigured = !Object.values(firebaseConfig).some(function(value) {
+  return String(value).startsWith('VOTRE_');
+});
+
 // Initialisation Firebase (compat SDK)
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+let db = null;
+if (isFirebaseConfigured) {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+}
 
 /* ============================================================
    1. SPLASH SCREEN
@@ -1179,6 +1186,13 @@ function submitToFirebase(nom, present, nombrePersonnes) {
   submitBtn.textContent = 'Envoi en cours...';
   submitBtn.disabled = true;
 
+  if (!db) {
+    showFormError('La base de données n’est pas encore configurée. Réessayez plus tard.');
+    submitBtn.textContent = 'Confirmer ma présence';
+    submitBtn.disabled = false;
+    return;
+  }
+
   db.collection('guests').add({
     nom:             nom,
     present:         present,
@@ -1190,8 +1204,7 @@ function submitToFirebase(nom, present, nombrePersonnes) {
   })
   .catch(function (error) {
     console.error('Erreur Firebase :', error);
-    // En mode développement (sans Firebase configuré), afficher quand même le succès
-    showSuccessScreen(nom, present, nombrePersonnes);
+    showFormError('La confirmation n’a pas pu être envoyée. Merci de réessayer.');
   })
   .finally(function () {
     submitBtn.textContent = 'Confirmer ma présence';
