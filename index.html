@@ -458,9 +458,190 @@ body {
   color:var(--text-light); margin-top:6px; opacity:.7;
 }
 
+@media (max-width:620px) {
+  html,
+  body {
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  @supports (overflow:clip) {
+    html,
+    body,
+    #splash,
+    #main-content {
+      overflow-x:clip;
+    }
+  }
+
+  #splash {
+    width:100%;
+    max-width:100%;
+    padding:0 24px;
+    overflow:hidden;
+    text-align:center;
+  }
+
+  .splash-monogram {
+    display:block;
+    width:100%;
+    max-width:100%;
+    font-size:84px;
+    letter-spacing:0;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .splash-date {
+    width:100%;
+    font-size:14px;
+    letter-spacing:5px;
+    text-align:center;
+  }
+
+  .splash-roman {
+    width:100%;
+    letter-spacing:3px;
+    text-align:center;
+  }
+
+  .splash-hint {
+    width:100%;
+    letter-spacing:3px;
+    text-align:center;
+  }
+
+  #main-content {
+    width:100%;
+    max-width:430px;
+    margin:0 auto;
+    padding:24px 12px calc(88px + env(safe-area-inset-bottom));
+    box-sizing:border-box;
+    overflow-x:hidden;
+  }
+
+  .invitation-card,
+  .card-outer,
+  .card-inner {
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+
+  .card-outer {
+    padding:10px;
+  }
+
+  .card-inner {
+    padding:42px 18px 50px;
+    overflow:hidden;
+  }
+
+  .corner {
+    width:58px;
+    height:58px;
+  }
+
+  .vine-left,
+  .vine-right {
+    top:56px;
+    bottom:56px;
+    width:16px;
+    background-size:16px 64px;
+  }
+
+  .vine-top,
+  .vine-bottom {
+    left:56px;
+    right:56px;
+    height:16px;
+    background-size:64px 16px;
+  }
+
+  .overline,
+  .event-pre,
+  .timeline-title,
+  .countdown-title,
+  .rsvp-title,
+  .dresscode-label {
+    letter-spacing:4px;
+  }
+
+  .families-text {
+    font-size:13px;
+    letter-spacing:1.1px;
+    line-height:2;
+  }
+
+  .names-wrap {
+    width:100%;
+    overflow:hidden;
+  }
+
+  .names-wrap::before {
+    font-size:126px;
+  }
+
+  .name-script {
+    font-size:76px;
+  }
+
+  .name-amp {
+    font-size:44px;
+  }
+
+  .body-text {
+    max-width:100%;
+    font-size:15px;
+    line-height:1.9;
+  }
+
+  .body-text br {
+    display:none;
+  }
+
+  .event-date-line {
+    font-size:15px;
+    letter-spacing:1.4px;
+  }
+
+  .event-time {
+    font-size:42px;
+  }
+
+  .event-venue {
+    font-size:13px;
+    letter-spacing:1.1px;
+  }
+
+  .countdown-grid {
+    justify-content:space-between;
+    gap:8px;
+  }
+
+  .cd-num {
+    width:56px;
+    min-width:0;
+    font-size:44px;
+  }
+
+  .cd-lbl {
+    font-size:9px;
+    letter-spacing:1.5px;
+  }
+
+  .radio-grp {
+    flex-direction:column;
+  }
+}
+
 @media (max-width:380px) {
-  .card-inner { padding:36px 20px 44px; }
-  .cd-num { min-width:56px; }
+  .card-inner { padding:38px 16px 46px; }
+  .splash-monogram { font-size:76px; }
+  .name-script { font-size:70px; }
+  .name-amp { font-size:40px; }
+  .cd-num { width:52px; }
 }
   </style>
 </head>
