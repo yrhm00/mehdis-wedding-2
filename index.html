@@ -21,15 +21,26 @@
   --white:      #ffffff;
 }
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+html {
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  overscroll-behavior-x:none;
+  scroll-behavior:smooth;
+}
 
 body {
   background-color: var(--cream);
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><rect width='6' height='6' fill='%23faf8f3'/><path d='M0 6L6 0' stroke='%23e4ddd2' stroke-width='0.4' opacity='0.6'/></svg>");
   color: var(--text);
   font-family: 'Cormorant Garamond', Georgia, serif;
+  width:100%;
+  max-width:100%;
   min-height: 100vh;
+  position:relative;
   overflow-x: hidden;
+  overscroll-behavior-x:none;
+  touch-action:pan-y pinch-zoom;
 }
 
 /* ── SPLASH ── */
@@ -83,9 +94,12 @@ body {
 #main-content {
   opacity:0; transform:translateY(28px);
   transition: opacity 1s ease .15s, transform 1s ease .15s;
+  width:100%;
   padding: 28px 16px 80px;
   max-width: 620px;
   margin:0 auto;
+  overflow-x:hidden;
+  touch-action:pan-y pinch-zoom;
 }
 #main-content.visible { opacity:1; transform:translateY(0); }
 
@@ -953,6 +967,38 @@ const db = firebase.firestore();
 /* ============================================================
    1. SPLASH SCREEN
    ============================================================ */
+(function lockHorizontalPan() {
+  let startX = 0;
+  let startY = 0;
+
+  function clampHorizontalScroll() {
+    if (window.scrollX !== 0) {
+      window.scrollTo(0, window.scrollY);
+    }
+  }
+
+  document.addEventListener('touchstart', function (event) {
+    if (event.touches.length !== 1) return;
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function (event) {
+    if (event.touches.length !== 1) return;
+
+    const touch = event.touches[0];
+    const deltaX = Math.abs(touch.clientX - startX);
+    const deltaY = Math.abs(touch.clientY - startY);
+
+    if (deltaX > deltaY) {
+      event.preventDefault();
+      clampHorizontalScroll();
+    }
+  }, { passive: false });
+
+  window.addEventListener('scroll', clampHorizontalScroll, { passive: true });
+})();
+
 (function initSplash() {
   const splash      = document.getElementById('splash');
   const mainContent = document.getElementById('main-content');
