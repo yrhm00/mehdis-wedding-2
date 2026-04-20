@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Mariage Mehdi &amp; Kahina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ---------- Variables & Reset ---------- */
+    :root {
+      --cream:     #faf8f3;
+      --cream-dk:  #ede8de;
+      --text:      #2c2a24;
+      --text-lt:   #5a5650;
+      --sage:      #6b7a5a;
+      --sage-dk:   #4d5a3e;
+      --sage-lt:   #8a9a78;
+      --burgundy:  #7a3d4a;
+      --gold:      #b8953e;
+      --white:     #ffffff;
+      --green-ok:  #3a7a4a;
+      --red-no:    #8c3a44;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Lato', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ============================================================
+       ÉCRAN DE CONNEXION
+       ============================================================ */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 380px;
+      border: 2px solid var(--sage);
+      padding: 48px 36px;
+      text-align: center;
+      position: relative;
+    }
+    .login-box::before {
+      content: '';
+      position: absolute;
+      inset: 7px;
+      border: 1px solid var(--sage-lt);
+      pointer-events: none;
+    }
+    .login-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: var(--sage-dk);
+      margin-bottom: 4px;
+    }
+    .login-subtitle {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-lt);
+      margin-bottom: 32px;
+    }
+    .login-input {
+      width: 100%;
+      padding: 13px 16px;
+      background: transparent;
+      border: 1px solid var(--sage-lt);
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      text-align: center;
+      letter-spacing: 3px;
+      transition: border-color 0.2s;
+      margin-bottom: 16px;
+    }
+    .login-input:focus { border-color: var(--sage); }
+    .login-input.error { border-color: var(--burgundy); animation: shake 0.3s; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--sage-dk);
+      color: var(--cream);
+      border: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: var(--sage); }
+    .login-error {
+      font-size: 13px;
+      color: var(--burgundy);
+      font-style: italic;
+      margin-top: 10px;
+      min-height: 18px;
+    }
+
+    /* ============================================================
+       TABLEAU DE BORD
+       ============================================================ */
+    #dashboard { display: none; }
+    #dashboard.visible { display: block; }
+
+    /* Header */
+    .dash-header {
+      background: var(--sage-dk);
+      color: var(--cream);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .dash-header-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 32px;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .dash-header-sub {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+    .btn-logout {
+      background: transparent;
+      border: 1px solid rgba(250,248,243,0.5);
+      color: var(--cream);
+      padding: 8px 16px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      transition: background 0.2s;
+    }
+    .btn-logout:hover { background: rgba(250,248,243,0.12); }
+
+    /* Indicateur temps réel */
+    .realtime-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sage-lt);
+      padding: 6px 14px;
+      border: 1px solid var(--sage-lt);
+      margin: 20px 24px 0;
+      width: fit-content;
+    }
+    .realtime-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sage-lt);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 0.3; }
+      50%      { opacity: 1; }
+    }
+
+    /* Contenu principal */
+    .dash-body {
+      padding: 24px;
+      max-width: 900px;
+    }
+
+    /* Compteurs */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      border: 1.5px solid var(--sage-lt);
+      padding: 24px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 1px solid var(--cream-dk);
+      pointer-events: none;
+    }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 58px;
+      font-weight: 300;
+      color: var(--sage-dk);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-lt);
+      margin-top: 6px;
+      display: block;
+    }
+    .stat-card.highlight .stat-number { color: var(--burgundy); }
+
+    /* Barre de progression RSVP */
+    .rsvp-progress-section { margin-bottom: 28px; }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-lt);
+      margin-bottom: 8px;
+    }
+    .progress-bar-bg {
+      height: 6px;
+      background: var(--cream-dk);
+      border-radius: 0;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--sage);
+      transition: width 0.6s ease;
+    }
+
+    /* Tableau de réponses */
+    .table-section-title {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-lt);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--cream-dk);
+    }
+    .responses-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .responses-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-lt);
+      padding: 0 12px 10px;
+      font-weight: 400;
+    }
+    .responses-table td {
+      padding: 12px 12px;
+      border-top: 1px solid var(--cream-dk);
+      vertical-align: middle;
+    }
+    .responses-table tr:hover td { background: rgba(107,122,90,0.04); }
+
+    /* Badge statut */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .badge-present {
+      background: rgba(58,122,74,0.1);
+      color: var(--green-ok);
+      border: 1px solid rgba(58,122,74,0.3);
+    }
+    .badge-absent {
+      background: rgba(140,58,68,0.08);
+      color: var(--red-no);
+      border: 1px solid rgba(140,58,68,0.25);
+    }
+
+    /* Message vide */
+    .empty-state {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-lt);
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    /* Loading spinner */
+    .loading-state {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-lt);
+    }
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 2px solid var(--cream-dk);
+      border-top-color: var(--sage);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 500px) {
+      .dash-body { padding: 16px; }
+      .responses-table th:nth-child(3),
+      .responses-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     ÉCRAN DE CONNEXION
+     ============================================================ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-title">Admin</div>
+    <p class="login-subtitle">Mariage Mehdi &amp; Kahina</p>
+
+    <input
+      type="password"
+      id="password-input"
+      class="login-input"
+      placeholder="Mot de passe"
+      autocomplete="current-password"
+    />
+
+    <button class="login-btn" id="btn-login">Accéder au tableau de bord</button>
+    <p class="login-error" id="login-error"></p>
+  </div>
+</div>
+
+<!-- ============================================================
+     TABLEAU DE BORD
+     ============================================================ -->
+<div id="dashboard">
+
+  <div class="dash-header">
+    <div>
+      <div class="dash-header-title">Mehdi &amp; Kahina</div>
+      <div class="dash-header-sub">Tableau de bord · 19 Septembre 2026</div>
+    </div>
+    <button class="btn-logout" id="btn-logout">Déconnexion</button>
+  </div>
+
+  <div class="dash-body">
+
+    <div class="realtime-badge">
+      <div class="realtime-dot"></div>
+      Mise à jour en temps réel
+    </div>
+
+    <!-- COMPTEURS -->
+    <div class="stats-grid" style="margin-top:20px">
+      <div class="stat-card">
+        <span class="stat-number" id="stat-total">—</span>
+        <span class="stat-label">Total des réponses</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="stat-present">—</span>
+        <span class="stat-label">Invités présents</span>
+      </div>
+      <div class="stat-card highlight">
+        <span class="stat-number" id="stat-personnes">—</span>
+        <span class="stat-label">Personnes confirmées</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="stat-absent">—</span>
+        <span class="stat-label">Absences</span>
+      </div>
+    </div>
+
+    <!-- BARRE DE PROGRESSION -->
+    <div class="rsvp-progress-section">
+      <div class="progress-header">
+        <span>Taux de présence</span>
+        <span id="progress-pct">—</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- LISTE DES RÉPONSES -->
+    <p class="table-section-title">Liste des réponses</p>
+
+    <div id="table-container">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        Chargement des données…
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     SCRIPTS FIREBASE
+     ============================================================ -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+  /* ----------------------------------------------------------
+     CONFIGURATION FIREBASE
+     Mêmes valeurs que dans script.js
+     ---------------------------------------------------------- */
+  const firebaseConfig = {
+    apiKey:            "VOTRE_API_KEY",
+    authDomain:        "VOTRE_PROJECT_ID.firebaseapp.com",
+    projectId:         "VOTRE_PROJECT_ID",
+    storageBucket:     "VOTRE_PROJECT_ID.appspot.com",
+    messagingSenderId: "VOTRE_MESSAGING_SENDER_ID",
+    appId:             "VOTRE_APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  /* ----------------------------------------------------------
+     MOT DE PASSE ADMIN
+     ⚠ Changez ce mot de passe avant de déployer
+     Pour une sécurité réelle, utilisez Firebase Authentication
+     ---------------------------------------------------------- */
+  const ADMIN_PASSWORD = "benali-ziri-2026";
+
+  /* ============================================================
+     CONNEXION
+     ============================================================ */
+  const loginScreen  = document.getElementById('login-screen');
+  const dashboard    = document.getElementById('dashboard');
+  const loginError   = document.getElementById('login-error');
+  const passwordInput = document.getElementById('password-input');
+  let   unsubscribe  = null; // référence au listener Firebase temps réel
+
+  document.getElementById('btn-login').addEventListener('click', tryLogin);
+  passwordInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') tryLogin();
+  });
+
+  function tryLogin() {
+    const val = passwordInput.value;
+    if (val === ADMIN_PASSWORD) {
+      loginScreen.style.display = 'none';
+      dashboard.classList.add('visible');
+      initDashboard();
+    } else {
+      loginError.textContent = 'Mot de passe incorrect.';
+      passwordInput.classList.add('error');
+      passwordInput.value = '';
+      setTimeout(() => {
+        loginError.textContent = '';
+        passwordInput.classList.remove('error');
+      }, 2000);
+    }
+  }
+
+  document.getElementById('btn-logout').addEventListener('click', function() {
+    if (unsubscribe) unsubscribe(); // arrêter le listener temps réel
+    dashboard.classList.remove('visible');
+    loginScreen.style.display = 'flex';
+    passwordInput.value = '';
+  });
+
+  /* ============================================================
+     TABLEAU DE BORD — Données temps réel
+     ============================================================ */
+  function initDashboard() {
+    // Écoute en temps réel la collection "guests"
+    unsubscribe = db.collection('guests')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot(function(snapshot) {
+        renderDashboard(snapshot.docs);
+      }, function(err) {
+        console.error('Erreur Firestore:', err);
+        document.getElementById('table-container').innerHTML =
+          '<div class="empty-state">Impossible de charger les données.<br>Vérifiez votre configuration Firebase.</div>';
+      });
+  }
+
+  /* ============================================================
+     RENDU DU TABLEAU DE BORD
+     ============================================================ */
+  function renderDashboard(docs) {
+    const total     = docs.length;
+    let   presents  = 0;
+    let   absents   = 0;
+    let   personnes = 0;
+
+    docs.forEach(function(doc) {
+      const d = doc.data();
+      if (d.present) {
+        presents++;
+        personnes += (d.nombre_personnes || 1);
+      } else {
+        absents++;
+      }
+    });
+
+    // Mise à jour des compteurs
+    document.getElementById('stat-total').textContent    = total;
+    document.getElementById('stat-present').textContent  = presents;
+    document.getElementById('stat-personnes').textContent = personnes;
+    document.getElementById('stat-absent').textContent   = absents;
+
+    // Barre de progression
+    const pct = total > 0 ? Math.round((presents / total) * 100) : 0;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-pct').textContent  = pct + '%';
+
+    // Tableau
+    const container = document.getElementById('table-container');
+
+    if (total === 0) {
+      container.innerHTML = '<div class="empty-state">Aucune réponse pour le moment.<br>Partagez votre invitation !</div>';
+      return;
+    }
+
+    let rows = '';
+    docs.forEach(function(doc) {
+      const d    = doc.data();
+      const date = d.timestamp ? formatDate(d.timestamp.toDate()) : '—';
+      const badge = d.present
+        ? '<span class="badge badge-present">Présent</span>'
+        : '<span class="badge badge-absent">Absent</span>';
+      const nb = d.present ? (d.nombre_personnes || 1) : '—';
+
+      rows += `
+        <tr>
+          <td><strong>${escapeHtml(d.nom || '—')}</strong></td>
+          <td>${badge}</td>
+          <td>${date}</td>
+          <td style="text-align:center">${nb}</td>
+        </tr>`;
+    });
+
+    container.innerHTML = `
+      <table class="responses-table">
+        <thead>
+          <tr>
+            <th>Nom &amp; Prénom</th>
+            <th>Statut</th>
+            <th>Date de réponse</th>
+            <th style="text-align:center">Personnes</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  /* ============================================================
+     UTILITAIRES
+     ============================================================ */
+  function formatDate(date) {
+    return date.toLocaleDateString('fr-BE', {
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+</script>
+</body>
+</html>

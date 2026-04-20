@@ -1,0 +1,604 @@
+/* ============================================================
+   MARIAGE MEHDI & KAHINA — Styles principaux
+   Palette : crème #faf8f3 | sauge #6b7a5a | bordeaux #7a3d4a | or #b8953e
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Lato:wght@300;400&display=swap');
+
+/* ---------- Variables ---------- */
+:root {
+  --cream:      #faf8f3;
+  --cream-dark: #ede8de;
+  --text:       #2c2a24;
+  --text-light: #5a5650;
+  --sage:       #6b7a5a;
+  --sage-light: #8a9a78;
+  --sage-dark:  #4d5a3e;
+  --burgundy:   #7a3d4a;
+  --gold:       #b8953e;
+  --white:      #ffffff;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SPLASH SCREEN
+   ============================================================ */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+#splash.hidden {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
+}
+.splash-initials {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(80px, 20vw, 130px);
+  color: var(--sage-dark);
+  line-height: 1;
+  letter-spacing: 4px;
+}
+.splash-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(13px, 3vw, 16px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+.splash-hint {
+  margin-top: 48px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--sage);
+  opacity: 0.7;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.splash-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--sage);
+  margin: 24px auto;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+#main-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
+  padding: 20px 16px 60px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+#main-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   INVITATION CARD — Cadre botanique
+   ============================================================ */
+.invitation-card {
+  position: relative;
+  background: var(--cream);
+  padding: 10px;
+}
+.card-outer-frame {
+  position: relative;
+  border: 2.5px solid var(--sage);
+  padding: 12px;
+}
+.card-inner-frame {
+  border: 1px solid var(--sage-light);
+  padding: 32px 28px 40px;
+  position: relative;
+}
+
+/* Coin botanique — ornements SVG positionnés aux 4 coins */
+.corner-ornament {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  z-index: 2;
+}
+.corner-ornament.tl { top: -2px;  left: -2px;  transform: none; }
+.corner-ornament.tr { top: -2px;  right: -2px; transform: scaleX(-1); }
+.corner-ornament.bl { bottom: -2px; left: -2px;  transform: scaleY(-1); }
+.corner-ornament.br { bottom: -2px; right: -2px; transform: scale(-1); }
+
+/* Bande latérale — motif floral répété */
+.side-strip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow: hidden;
+}
+.side-strip.top    { top: -4px;    left: 68px; right: 68px; height: 20px; flex-direction: row; }
+.side-strip.bottom { bottom: -4px; left: 68px; right: 68px; height: 20px; flex-direction: row; }
+.side-strip.left   { left: -4px;   top: 68px;  bottom: 68px; width: 20px; flex-direction: column; }
+.side-strip.right  { right: -4px;  top: 68px;  bottom: 68px; width: 20px; flex-direction: column; }
+
+/* ============================================================
+   TYPOGRAPHIE — En-tête
+   ============================================================ */
+.families-text {
+  font-size: clamp(11px, 2.8vw, 13px);
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.families-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.names-block {
+  text-align: center;
+  margin: 4px 0 20px;
+  line-height: 1;
+}
+.name-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(52px, 14vw, 80px);
+  color: var(--text);
+  display: block;
+  line-height: 1.1;
+}
+.name-ampersand {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(36px, 10vw, 58px);
+  color: var(--sage-dark);
+  display: block;
+  line-height: 1.1;
+}
+
+.bismillah-line {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  margin: 8px 0;
+  font-style: italic;
+}
+.arabic-symbol {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.invitation-body {
+  text-align: center;
+  font-size: clamp(13px, 3.2vw, 15px);
+  line-height: 1.9;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+/* ---------- Séparateur floral ---------- */
+.floral-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+.floral-divider::before,
+.floral-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--sage-light);
+}
+.floral-divider-icon {
+  color: var(--burgundy);
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ============================================================
+   SECTION : Programme
+   ============================================================ */
+.event-details {
+  text-align: center;
+  margin: 8px 0 20px;
+}
+.event-date {
+  font-size: clamp(13px, 3.2vw, 15px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  display: block;
+  margin-bottom: 4px;
+}
+.event-time {
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 600;
+  color: var(--sage-dark);
+  display: block;
+  margin-bottom: 10px;
+}
+.event-venue {
+  font-size: clamp(13px, 3.2vw, 15px);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--text);
+  display: block;
+  line-height: 1.8;
+}
+.event-address {
+  font-size: clamp(13px, 3.2vw, 14px);
+  color: var(--text-light);
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- Boutons d'action ---------- */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-sage {
+  color: var(--sage-dark);
+  border-color: var(--sage);
+}
+.btn-sage:hover {
+  background: var(--sage);
+  color: var(--white);
+}
+.btn-burgundy {
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+}
+.btn-burgundy:hover {
+  background: var(--burgundy);
+  color: var(--white);
+}
+
+/* ============================================================
+   COMPTE À REBOURS
+   ============================================================ */
+.countdown-section {
+  margin: 28px 0;
+  text-align: center;
+}
+.countdown-label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 4vw, 24px);
+}
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.countdown-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 9vw, 52px);
+  font-weight: 300;
+  color: var(--sage-dark);
+  line-height: 1;
+  min-width: 60px;
+  text-align: center;
+}
+.countdown-unit-label {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ============================================================
+   FORMULAIRE RSVP
+   ============================================================ */
+.rsvp-section {
+  margin: 28px 0 0;
+  text-align: center;
+}
+.rsvp-title {
+  font-size: clamp(11px, 2.8vw, 13px);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+.rsvp-deadline {
+  font-size: 13px;
+  color: var(--burgundy);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+.form-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid var(--sage-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  border-color: var(--sage);
+}
+.form-input::placeholder {
+  color: var(--cream-dark);
+}
+
+/* Radio RSVP stylisés */
+.radio-group {
+  display: flex;
+  gap: 12px;
+}
+.radio-option {
+  flex: 1;
+  position: relative;
+}
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1.5px solid var(--sage-light);
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  transition: all 0.2s;
+  user-select: none;
+}
+.radio-dot {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--sage);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.radio-option input:checked + .radio-label {
+  border-color: var(--sage-dark);
+  color: var(--sage-dark);
+  background: rgba(107, 122, 90, 0.06);
+}
+.radio-option input:checked + .radio-label .radio-dot {
+  background: var(--sage-dark);
+  border-color: var(--sage-dark);
+  box-shadow: inset 0 0 0 2px var(--cream);
+}
+.radio-option input[value="non"]:checked + .radio-label {
+  border-color: var(--burgundy);
+  color: var(--burgundy);
+  background: rgba(122, 61, 74, 0.05);
+}
+.radio-option input[value="non"]:checked + .radio-label .radio-dot {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  box-shadow: inset 0 0 0 2px var(--cream);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--sage-dark);
+  color: var(--cream);
+  border: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.25s;
+}
+.btn-submit:hover { background: var(--sage); }
+
+/* ============================================================
+   MODALE — Nombre de personnes
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 42, 36, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  padding: 20px;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-box {
+  background: var(--cream);
+  padding: 40px 32px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  transform: scale(0.95);
+  transition: transform 0.3s;
+}
+.modal-overlay.active .modal-box { transform: scale(1); }
+.modal-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  color: var(--sage-dark);
+  margin-bottom: 8px;
+}
+.modal-subtitle {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 32px;
+}
+.counter-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.counter-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1.5px solid var(--sage);
+  color: var(--sage-dark);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-family: 'Cormorant Garamond', serif;
+}
+.counter-btn:hover { background: var(--sage); color: var(--white); }
+.counter-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--sage-dark);
+  min-width: 48px;
+  text-align: center;
+}
+
+/* ============================================================
+   ÉCRAN DE SUCCÈS
+   ============================================================ */
+#success-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+#success-screen.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.success-icon {
+  font-size: 48px;
+  color: var(--sage-dark);
+  margin-bottom: 8px;
+}
+.success-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(42px, 10vw, 64px);
+  color: var(--sage-dark);
+  margin-bottom: 8px;
+}
+.success-text {
+  font-size: 16px;
+  color: var(--text-light);
+  line-height: 1.8;
+  max-width: 320px;
+}
+.success-divider { margin: 24px auto; width: 60px; height: 1px; background: var(--sage-light); }
+
+/* ============================================================
+   UTILITAIRES
+   ============================================================ */
+.text-center { text-align: center; }
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-0  { margin-bottom: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 380px) {
+  .card-inner-frame { padding: 24px 18px 32px; }
+  .countdown-number { min-width: 48px; }
+}

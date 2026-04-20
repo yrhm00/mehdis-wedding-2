@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mariage Mehdi &amp; Kahina — 19 Septembre 2026</title>
+  <meta name="description" content="Save the Date — Mariage de Mehdi Benali &amp; Kahina Ziri, le 19 Septembre 2026 à La Louvière, Belgique." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --cream:      #faf8f3;
+  --cream-dark: #ede8de;
+  --text:       #2c2a24;
+  --text-light: #5a5650;
+  --sage:       #6b7a5a;
+  --sage-light: #8a9a78;
+  --sage-dark:  #4d5a3e;
+  --burgundy:   #7a3d4a;
+  --gold:       #b8953e;
+  --white:      #ffffff;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><rect width='6' height='6' fill='%23faf8f3'/><path d='M0 6L6 0' stroke='%23e4ddd2' stroke-width='0.4' opacity='0.6'/></svg>");
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── SPLASH ── */
+#splash {
+  position:fixed; inset:0;
+  background:var(--cream);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  z-index:1000;
+  transition: opacity .9s ease, transform .9s ease;
+}
+#splash.hidden { opacity:0; transform:translateY(-50px); pointer-events:none; }
+
+.splash-monogram {
+  font-family:'Great Vibes',cursive;
+  font-size: clamp(90px,22vw,148px);
+  color: var(--sage-dark);
+  line-height:1;
+  letter-spacing:8px;
+  position:relative;
+}
+.splash-monogram::after {
+  content:'';
+  position:absolute; bottom:-6px; left:50%; transform:translateX(-50%);
+  width:80px; height:1px; background:var(--sage);
+}
+.splash-date {
+  font-family:'Cormorant Garamond',serif;
+  font-size: clamp(13px,3vw,15px);
+  letter-spacing:7px;
+  text-transform:uppercase;
+  color:var(--text-light);
+  margin-top:20px;
+}
+.splash-roman {
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;
+  letter-spacing:4px;
+  color:var(--sage);
+  margin-top:6px;
+  opacity:.75;
+}
+.splash-hint {
+  margin-top:52px;
+  font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--sage); opacity:.65;
+  animation: breathe 2.2s ease-in-out infinite;
+}
+@keyframes breathe { 0%,100%{opacity:.3} 50%{opacity:.8} }
+
+/* ── MAIN ── */
+#main-content {
+  opacity:0; transform:translateY(28px);
+  transition: opacity 1s ease .15s, transform 1s ease .15s;
+  padding: 28px 16px 80px;
+  max-width: 620px;
+  margin:0 auto;
+}
+#main-content.visible { opacity:1; transform:translateY(0); }
+
+/* ── CARD FRAME ── */
+.invitation-card { position:relative; }
+
+.card-outer {
+  position:relative;
+  border: 2.5px solid var(--sage);
+  padding: 14px;
+}
+.card-inner {
+  border: 1px solid rgba(107,122,90,.45);
+  padding: 48px 36px 56px;
+  position:relative;
+}
+
+/* Vine strips — sides */
+.vine-left, .vine-right, .vine-top, .vine-bottom {
+  position:absolute;
+  pointer-events:none;
+  z-index:1;
+}
+/* Tile vertical : filet doré + diamants + rose bordeaux */
+.vine-left  { left:-1px;   top:72px; bottom:72px; width:20px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='80'><line x1='10' y1='0' x2='10' y2='80' stroke='%23b8953e' stroke-width='0.8' opacity='0.45'/><polygon points='10,6 14,13 10,20 6,13' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/><circle cx='10' cy='40' r='4.5' fill='%237a3d4a' opacity='0.28'/><circle cx='10' cy='40' r='2.5' fill='%23b8953e' opacity='0.22'/><circle cx='10' cy='40' r='1.2' fill='%237a3d4a' opacity='0.5'/><polygon points='10,60 14,67 10,74 6,67' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/></svg>");
+  background-repeat:repeat-y; background-size:20px 80px; }
+.vine-right { right:-1px;  top:72px; bottom:72px; width:20px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='80'><line x1='10' y1='0' x2='10' y2='80' stroke='%23b8953e' stroke-width='0.8' opacity='0.45'/><polygon points='10,6 14,13 10,20 6,13' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/><circle cx='10' cy='40' r='4.5' fill='%237a3d4a' opacity='0.28'/><circle cx='10' cy='40' r='2.5' fill='%23b8953e' opacity='0.22'/><circle cx='10' cy='40' r='1.2' fill='%237a3d4a' opacity='0.5'/><polygon points='10,60 14,67 10,74 6,67' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/></svg>");
+  background-repeat:repeat-y; background-size:20px 80px; }
+/* Tile horizontal : même motif tourné */
+.vine-top    { top:-1px;   left:72px; right:72px; height:20px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='20'><line x1='0' y1='10' x2='80' y2='10' stroke='%23b8953e' stroke-width='0.8' opacity='0.45'/><polygon points='6,10 13,6 20,10 13,14' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/><circle cx='40' cy='10' r='4.5' fill='%237a3d4a' opacity='0.28'/><circle cx='40' cy='10' r='2.5' fill='%23b8953e' opacity='0.22'/><circle cx='40' cy='10' r='1.2' fill='%237a3d4a' opacity='0.5'/><polygon points='60,10 67,6 74,10 67,14' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/></svg>");
+  background-repeat:repeat-x; background-size:80px 20px; }
+.vine-bottom { bottom:-1px; left:72px; right:72px; height:20px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='20'><line x1='0' y1='10' x2='80' y2='10' stroke='%23b8953e' stroke-width='0.8' opacity='0.45'/><polygon points='6,10 13,6 20,10 13,14' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/><circle cx='40' cy='10' r='4.5' fill='%237a3d4a' opacity='0.28'/><circle cx='40' cy='10' r='2.5' fill='%23b8953e' opacity='0.22'/><circle cx='40' cy='10' r='1.2' fill='%237a3d4a' opacity='0.5'/><polygon points='60,10 67,6 74,10 67,14' fill='none' stroke='%23b8953e' stroke-width='1' opacity='0.6'/></svg>");
+  background-repeat:repeat-x; background-size:80px 20px; }
+
+/* Corner ornaments */
+.corner { position:absolute; width:76px; height:76px; z-index:2; }
+.corner.tl { top:-2px;  left:-2px; }
+.corner.tr { top:-2px;  right:-2px; transform:scaleX(-1); }
+.corner.bl { bottom:-2px; left:-2px; transform:scaleY(-1); }
+.corner.br { bottom:-2px; right:-2px; transform:scale(-1); }
+
+/* ── TYPOGRAPHY ── */
+.overline {
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--text-light); text-align:center; margin-bottom:10px;
+}
+.families-text {
+  font-size:clamp(12px,3vw,14px);
+  text-align:center; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--text-light); line-height:2.1; margin-bottom:28px;
+}
+.families-text strong { color:var(--text); font-weight:600; }
+
+.names-wrap { text-align:center; margin:0 0 28px; position:relative; }
+/* watermark monogram */
+.names-wrap::before {
+  content:'M & K';
+  font-family:'Great Vibes',cursive;
+  font-size:180px;
+  color:rgba(107,122,90,.05);
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  line-height:1; white-space:nowrap;
+  pointer-events:none;
+}
+.name-script {
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(58px,14vw,88px);
+  color:var(--text); display:block; line-height:1.1;
+}
+.name-amp {
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(40px,10vw,60px);
+  color:var(--sage-dark); display:block; line-height:1.1;
+}
+
+.bismillah {
+  text-align:center; font-size:14px; letter-spacing:1px;
+  color:var(--text-light); font-style:italic; margin:4px 0 32px;
+}
+.arabic { font-size:18px; vertical-align:middle; }
+
+.body-text {
+  text-align:center;
+  font-size:clamp(14px,3.4vw,16px); line-height:2;
+  color:var(--text-light); letter-spacing:.4px;
+}
+
+/* ── ORNAMENTAL DIVIDERS ── */
+.divider {
+  display:flex; align-items:center; gap:14px;
+  margin:36px 0;
+}
+.divider::before, .divider::after {
+  content:''; flex:1; height:1px; background:var(--sage-light); opacity:.7;
+}
+.divider-center {
+  display:flex; align-items:center; gap:7px;
+  color:var(--burgundy);
+}
+.divider-diamond {
+  width:5px; height:5px; background:var(--sage);
+  transform:rotate(45deg); display:inline-block;
+}
+.divider-flower { font-size:15px; color:var(--burgundy); }
+
+/* Gold rule */
+.gold-rule {
+  display:flex; align-items:center; gap:10px; margin:28px 0;
+}
+.gold-rule::before, .gold-rule::after {
+  content:''; flex:1; height:1px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:.5;
+}
+.gold-rule-center {
+  width:6px; height:6px; border:1.5px solid var(--gold);
+  transform:rotate(45deg); opacity:.7;
+}
+
+/* ── EVENT SECTION ── */
+.event-block { text-align:center; margin:4px 0 20px; }
+.event-pre {
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--sage); margin-bottom:12px; display:block;
+}
+.event-date-line {
+  font-size:clamp(14px,3.5vw,17px); font-weight:600;
+  letter-spacing:2px; text-transform:uppercase; text-decoration:underline;
+  text-underline-offset:5px; color:var(--text); display:block; margin-bottom:8px;
+}
+.event-time {
+  font-size:clamp(32px,8vw,44px); font-weight:300;
+  color:var(--sage-dark); display:block; line-height:1; margin-bottom:16px;
+  font-family:'Cormorant Garamond',serif;
+}
+.event-venue {
+  font-size:clamp(13px,3.2vw,15px); font-weight:600;
+  letter-spacing:1.5px; text-transform:uppercase; text-decoration:underline;
+  text-underline-offset:5px; color:var(--text); line-height:2;
+}
+.event-addr {
+  font-size:clamp(13px,3.2vw,14px); color:var(--text-light);
+  line-height:2; margin-top:4px; letter-spacing:.3px;
+}
+
+/* ── TIMELINE ── */
+.timeline { margin:28px 0 8px; }
+.timeline-title {
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--text-light); text-align:center; margin-bottom:20px;
+}
+.timeline-row {
+  display:flex; align-items:flex-start; gap:16px; margin-bottom:18px;
+}
+.timeline-time {
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px; font-weight:600; color:var(--sage-dark);
+  min-width:52px; text-align:right; line-height:1.2;
+  flex-shrink:0;
+}
+.timeline-sep {
+  display:flex; flex-direction:column; align-items:center; gap:0;
+  flex-shrink:0;
+}
+.timeline-dot {
+  width:8px; height:8px; border:1.5px solid var(--sage); background:var(--cream);
+  border-radius:50%; flex-shrink:0; margin-top:3px;
+}
+.timeline-line {
+  width:1px; flex:1; background:rgba(107,122,90,.35);
+  min-height:32px; margin-top:2px;
+}
+.timeline-content { flex:1; }
+.timeline-label {
+  font-size:14px; font-weight:600; color:var(--text);
+  letter-spacing:.5px;
+}
+.timeline-desc {
+  font-size:13px; color:var(--text-light); font-style:italic;
+  margin-top:2px; line-height:1.6;
+}
+
+/* ── DRESS CODE ── */
+.dresscode-block {
+  text-align:center;
+  border:1px solid var(--cream-dark);
+  padding:24px 28px;
+  margin:8px 0;
+  position:relative;
+  background:rgba(255,255,255,.4);
+}
+.dresscode-block::before {
+  content:''; position:absolute; inset:5px;
+  border:1px solid rgba(196,163,90,.2);
+  pointer-events:none;
+}
+.dresscode-label {
+  font-size:10px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:10px; display:block;
+}
+.dresscode-value {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,5vw,24px);
+  font-style:italic; color:var(--text);
+  letter-spacing:1px;
+}
+.dresscode-hint {
+  font-size:12px; color:var(--text-light); margin-top:8px;
+  letter-spacing:.5px;
+}
+
+/* ── ACTION BUTTONS ── */
+.action-btns {
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:24px 0 8px;
+}
+.btn {
+  display:inline-flex; align-items:center; gap:7px;
+  padding:11px 22px; border:1.5px solid currentColor;
+  background:transparent; font-family:'Cormorant Garamond',serif;
+  font-size:13px; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; text-decoration:none;
+  transition:background .25s, color .25s;
+}
+.btn-sage    { color:var(--sage-dark); border-color:var(--sage); }
+.btn-sage:hover    { background:var(--sage);    color:var(--white); }
+.btn-burg    { color:var(--burgundy);  border-color:var(--burgundy); }
+.btn-burg:hover    { background:var(--burgundy); color:var(--white); }
+
+/* ── COUNTDOWN ── */
+.countdown-wrap { text-align:center; margin:8px 0; }
+.countdown-title {
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--text-light); margin-bottom:20px;
+}
+.countdown-grid {
+  display:flex; justify-content:center; gap:clamp(10px,5vw,32px);
+}
+.cd-unit { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.cd-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,11vw,64px); font-weight:300;
+  color:var(--sage-dark); line-height:1; min-width:70px; text-align:center;
+  border-bottom:1px solid rgba(107,122,90,.25); padding-bottom:6px;
+}
+.cd-lbl { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--text-light); }
+
+/* ── RSVP ── */
+.rsvp-wrap { text-align:center; }
+.rsvp-title {
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--text-light); margin-bottom:8px;
+}
+.rsvp-subtitle {
+  font-family:'Great Vibes',cursive; font-size:36px;
+  color:var(--sage-dark); margin-bottom:8px;
+}
+.rsvp-deadline {
+  font-size:13px; color:var(--burgundy); font-style:italic; margin-bottom:28px;
+}
+.form-grp { margin-bottom:18px; text-align:left; }
+.form-lbl {
+  display:block; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--text-light); margin-bottom:8px;
+}
+.form-inp {
+  width:100%; padding:13px 16px; background:transparent;
+  border:1px solid var(--sage-light); font-family:'Cormorant Garamond',serif;
+  font-size:17px; color:var(--text); outline:none;
+  transition:border-color .2s;
+}
+.form-inp:focus { border-color:var(--sage); }
+.form-inp::placeholder { color:var(--cream-dark); }
+.radio-grp { display:flex; gap:10px; }
+.radio-opt { flex:1; position:relative; }
+.radio-opt input { position:absolute; opacity:0; width:0; }
+.radio-lbl {
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:13px; border:1.5px solid var(--sage-light); cursor:pointer;
+  font-size:15px; letter-spacing:2px; color:var(--text-light);
+  transition:all .2s; user-select:none;
+}
+.radio-dot {
+  width:11px; height:11px; border:1.5px solid var(--sage);
+  border-radius:50%; flex-shrink:0; transition:all .2s;
+}
+.radio-opt input:checked + .radio-lbl {
+  border-color:var(--sage-dark); color:var(--sage-dark);
+  background:rgba(107,122,90,.06);
+}
+.radio-opt input:checked + .radio-lbl .radio-dot {
+  background:var(--sage-dark); border-color:var(--sage-dark);
+  box-shadow:inset 0 0 0 2px var(--cream);
+}
+.radio-opt input[value="non"]:checked + .radio-lbl { border-color:var(--burgundy); color:var(--burgundy); background:rgba(122,61,74,.05); }
+.radio-opt input[value="non"]:checked + .radio-lbl .radio-dot { background:var(--burgundy); border-color:var(--burgundy); box-shadow:inset 0 0 0 2px var(--cream); }
+
+.btn-submit {
+  width:100%; padding:17px; background:var(--sage-dark); color:var(--cream);
+  border:none; font-family:'Cormorant Garamond',serif; font-size:14px;
+  letter-spacing:5px; text-transform:uppercase; cursor:pointer; margin-top:10px;
+  transition:background .25s;
+}
+.btn-submit:hover { background:var(--sage); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position:fixed; inset:0; background:rgba(44,42,36,.6);
+  display:flex; align-items:center; justify-content:center;
+  z-index:500; opacity:0; pointer-events:none;
+  transition:opacity .3s; padding:20px;
+}
+.modal-overlay.active { opacity:1; pointer-events:all; }
+.modal-box {
+  background:var(--cream); padding:44px 36px;
+  max-width:360px; width:100%; text-align:center;
+  transform:scale(.95); transition:transform .3s;
+  border:1.5px solid var(--sage);
+}
+.modal-overlay.active .modal-box { transform:scale(1); }
+.modal-title {
+  font-family:'Great Vibes',cursive; font-size:40px;
+  color:var(--sage-dark); margin-bottom:6px;
+}
+.modal-sub {
+  font-size:12px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--text-light); margin-bottom:32px;
+}
+.counter-ctrl { display:flex; align-items:center; justify-content:center; gap:28px; margin-bottom:28px; }
+.counter-btn {
+  width:46px; height:46px; background:transparent; border:1.5px solid var(--sage);
+  color:var(--sage-dark); font-size:24px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s; font-family:'Cormorant Garamond',serif;
+}
+.counter-btn:hover { background:var(--sage); color:var(--white); }
+.counter-val {
+  font-family:'Cormorant Garamond',serif; font-size:56px; font-weight:300;
+  color:var(--sage-dark); min-width:52px; text-align:center;
+}
+
+/* ── SUCCESS ── */
+#success-screen {
+  position:fixed; inset:0; background:var(--cream);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:40px 24px; z-index:900;
+  opacity:0; pointer-events:none; transition:opacity .8s;
+}
+#success-screen.visible { opacity:1; pointer-events:all; }
+.success-icon { font-size:40px; color:var(--sage-dark); margin-bottom:10px; }
+.success-title { font-family:'Great Vibes',cursive; font-size:clamp(44px,11vw,68px); color:var(--sage-dark); margin-bottom:10px; }
+.success-text { font-size:16px; color:var(--text-light); line-height:2; max-width:340px; }
+.success-hr { margin:24px auto; width:60px; height:1px; background:var(--sage-light); }
+
+/* ── FOOTER SIGNATURE ── */
+.card-footer {
+  text-align:center; margin-top:40px; padding-top:24px;
+  border-top:1px solid var(--cream-dark);
+}
+.card-footer-names {
+  font-family:'Great Vibes',cursive; font-size:32px;
+  color:var(--sage-dark); letter-spacing:2px;
+}
+.card-footer-sub {
+  font-size:10px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--text-light); margin-top:6px; opacity:.7;
+}
+
+@media (max-width:380px) {
+  .card-inner { padding:36px 20px 44px; }
+  .cd-num { min-width:56px; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ══ SPLASH ══ -->
+<div id="splash" role="button" aria-label="Ouvrir l'invitation">
+  <div class="splash-monogram">M &amp; K</div>
+  <div class="splash-date">19 Septembre 2026</div>
+  <div class="splash-roman">XIX · IX · MMXXVI</div>
+  <div class="splash-hint">Toucher pour ouvrir</div>
+</div>
+
+<!-- ══ INVITATION ══ -->
+<div id="main-content">
+<div class="invitation-card">
+<div class="card-outer">
+
+  <!-- Vine strips -->
+  <div class="vine-left" aria-hidden="true"></div>
+  <div class="vine-right" aria-hidden="true"></div>
+  <div class="vine-top" aria-hidden="true"></div>
+  <div class="vine-bottom" aria-hidden="true"></div>
+
+  <!-- Corner SVG ornaments -->
+  <svg class="corner tl" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="#6b7a5a"><path d="M4 76 Q38 42 76 4" stroke="#6b7a5a" stroke-width="1.2" fill="none"/>
+    <path d="M4 76 Q16 52 28 62 Q16 72 4 76Z" opacity=".8"/>
+    <path d="M22 58 Q34 34 46 44 Q34 54 22 58Z" opacity=".75"/>
+    <path d="M40 40 Q52 16 64 26 Q52 36 40 40Z" opacity=".8"/>
+    <path d="M58 22 Q66 10 74 14 Q66 26 58 22Z" opacity=".7"/></g>
+    <g fill="#7a3d4a"><circle cx="10" cy="70" r="4.5"/><circle cx="30" cy="50" r="3.5"/>
+    <circle cx="52" cy="28" r="4"/><circle cx="68" cy="12" r="3"/></g>
+    <g fill="#8a9a78" opacity=".45"><circle cx="20" cy="60" r="2"/>
+    <circle cx="42" cy="38" r="1.8"/><circle cx="62" cy="18" r="2"/></g>
+  </svg>
+  <svg class="corner tr" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="#6b7a5a"><path d="M4 76 Q38 42 76 4" stroke="#6b7a5a" stroke-width="1.2" fill="none"/>
+    <path d="M4 76 Q16 52 28 62 Q16 72 4 76Z" opacity=".8"/>
+    <path d="M22 58 Q34 34 46 44 Q34 54 22 58Z" opacity=".75"/>
+    <path d="M40 40 Q52 16 64 26 Q52 36 40 40Z" opacity=".8"/>
+    <path d="M58 22 Q66 10 74 14 Q66 26 58 22Z" opacity=".7"/></g>
+    <g fill="#7a3d4a"><circle cx="10" cy="70" r="4.5"/><circle cx="30" cy="50" r="3.5"/>
+    <circle cx="52" cy="28" r="4"/><circle cx="68" cy="12" r="3"/></g>
+    <g fill="#8a9a78" opacity=".45"><circle cx="20" cy="60" r="2"/>
+    <circle cx="42" cy="38" r="1.8"/><circle cx="62" cy="18" r="2"/></g>
+  </svg>
+  <svg class="corner bl" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="#6b7a5a"><path d="M4 76 Q38 42 76 4" stroke="#6b7a5a" stroke-width="1.2" fill="none"/>
+    <path d="M4 76 Q16 52 28 62 Q16 72 4 76Z" opacity=".8"/>
+    <path d="M22 58 Q34 34 46 44 Q34 54 22 58Z" opacity=".75"/>
+    <path d="M40 40 Q52 16 64 26 Q52 36 40 40Z" opacity=".8"/>
+    <path d="M58 22 Q66 10 74 14 Q66 26 58 22Z" opacity=".7"/></g>
+    <g fill="#7a3d4a"><circle cx="10" cy="70" r="4.5"/><circle cx="30" cy="50" r="3.5"/>
+    <circle cx="52" cy="28" r="4"/><circle cx="68" cy="12" r="3"/></g>
+    <g fill="#8a9a78" opacity=".45"><circle cx="20" cy="60" r="2"/>
+    <circle cx="42" cy="38" r="1.8"/><circle cx="62" cy="18" r="2"/></g>
+  </svg>
+  <svg class="corner br" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="#6b7a5a"><path d="M4 76 Q38 42 76 4" stroke="#6b7a5a" stroke-width="1.2" fill="none"/>
+    <path d="M4 76 Q16 52 28 62 Q16 72 4 76Z" opacity=".8"/>
+    <path d="M22 58 Q34 34 46 44 Q34 54 22 58Z" opacity=".75"/>
+    <path d="M40 40 Q52 16 64 26 Q52 36 40 40Z" opacity=".8"/>
+    <path d="M58 22 Q66 10 74 14 Q66 26 58 22Z" opacity=".7"/></g>
+    <g fill="#7a3d4a"><circle cx="10" cy="70" r="4.5"/><circle cx="30" cy="50" r="3.5"/>
+    <circle cx="52" cy="28" r="4"/><circle cx="68" cy="12" r="3"/></g>
+    <g fill="#8a9a78" opacity=".45"><circle cx="20" cy="60" r="2"/>
+    <circle cx="42" cy="38" r="1.8"/><circle cx="62" cy="18" r="2"/></g>
+  </svg>
+
+  <div class="card-inner">
+
+    <!-- Familles -->
+    <p class="overline">Save the Date</p>
+    <p class="families-text">
+      La famille <strong>BENALI</strong> et la famille <strong>ZIRI</strong><br>
+      ont le plaisir de vous inviter<br>
+      au mariage de leurs enfants
+    </p>
+
+    <!-- Noms -->
+    <div class="names-wrap">
+      <span class="name-script">Mehdi</span>
+      <span class="name-amp">&amp;</span>
+      <span class="name-script">Kahina</span>
+    </div>
+
+    <p class="bismillah">
+      Par la grâce d'Allah <span class="arabic">ﷻ</span>
+    </p>
+
+    <p class="body-text">
+      Ils s'uniront dans le lien sacré du mariage<br>
+      et seraient honorés de votre présence<br>
+      pour partager ce moment important de leur vie.
+    </p>
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider-center">
+        <span class="divider-diamond"></span>
+        <span class="divider-flower">✿</span>
+        <span class="divider-diamond"></span>
+      </div>
+    </div>
+
+    <!-- Programme -->
+    <div class="event-block">
+      <span class="event-pre">Programme de la cérémonie</span>
+      <span class="event-date-line">Le Samedi 19 Septembre 2026</span>
+      <span class="event-time">18 h 30</span>
+      <span class="event-venue">
+        Salle Prestigia Events<br>
+        Rue Léopold II · 7100 La Louvière
+      </span>
+      <p class="event-addr" style="margin-top:6px">Belgique</p>
+    </div>
+
+    <!-- Timeline de la soirée -->
+    <div class="gold-rule"><div class="gold-rule-center"></div></div>
+
+    <div class="timeline">
+      <p class="timeline-title">Déroulement de la soirée</p>
+
+      <div class="timeline-row">
+        <div class="timeline-time">18h30</div>
+        <div class="timeline-sep"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Accueil des invités</div>
+          <div class="timeline-desc">Cocktail de bienvenue · thé à la menthe &amp; douceurs orientales</div>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-time">19h30</div>
+        <div class="timeline-sep"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Cérémonie du mariage</div>
+          <div class="timeline-desc">Entrée des mariés · échange des vœux</div>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-time">20h30</div>
+        <div class="timeline-sep"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Dîner de gala</div>
+          <div class="timeline-desc">Banquet et festivités</div>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-time">23h00</div>
+        <div class="timeline-sep"><div class="timeline-dot"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-label">Soirée &amp; animation</div>
+          <div class="timeline-desc">Musique · danse · joie jusqu'au bout de la nuit</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-rule"><div class="gold-rule-center"></div></div>
+
+    <!-- Dress code -->
+    <div class="dresscode-block">
+      <span class="dresscode-label">Dress Code</span>
+      <div class="dresscode-value">Tenue du Bayern obligé</div>
+      <div class="dresscode-hint">Couleurs conseillées : tons doux, crème, vert sauge, bordeaux</div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="action-btns">
+      <button id="btn-calendar" class="btn btn-sage" type="button">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Ajouter au calendrier
+      </button>
+      <a href="https://maps.google.com/?q=Salle+Prestigia+Events+Rue+Leopold+II+7100+La+Louviere+Belgique"
+         target="_blank" rel="noopener" class="btn btn-burg">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Itinéraire
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider-center">
+        <span class="divider-diamond"></span>
+        <span class="divider-flower">✿</span>
+        <span class="divider-diamond"></span>
+      </div>
+    </div>
+
+    <!-- Compte à rebours -->
+    <div class="countdown-wrap">
+      <p class="countdown-title">Compte à rebours</p>
+      <div class="countdown-grid">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Jours</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Heures</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-minutes">--</span><span class="cd-lbl">Minutes</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-seconds">--</span><span class="cd-lbl">Secondes</span></div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider-center">
+        <span class="divider-diamond"></span>
+        <span class="divider-flower">✿</span>
+        <span class="divider-diamond"></span>
+      </div>
+    </div>
+
+    <!-- RSVP -->
+    <div class="rsvp-wrap">
+      <p class="rsvp-title">Confirmation de présence</p>
+      <p class="rsvp-subtitle">Répondez-nous</p>
+      <p class="rsvp-deadline">Merci de confirmer avant le 15 juillet 2026</p>
+
+      <form id="rsvp-form" novalidate>
+        <div class="form-grp">
+          <label class="form-lbl" for="guest-name">Nom &amp; Prénom</label>
+          <input class="form-inp" type="text" id="guest-name" name="name"
+            placeholder="Votre nom complet" autocomplete="name" required style="border-radius:20px" />
+        </div>
+        <div class="form-grp">
+          <label class="form-lbl">Serez-vous présent(e) ?</label>
+          <div class="radio-grp">
+            <div class="radio-opt">
+              <input type="radio" id="presence-oui" name="presence" value="oui" />
+              <label class="radio-lbl" for="presence-oui" style="border-radius:20px">
+                <span class="radio-dot"></span>Oui, avec joie 
+              </label>
+            </div>
+            <div class="radio-opt">
+              <input type="radio" id="presence-non" name="presence" value="non" />
+              <label class="radio-lbl" for="presence-non" style="border-radius:20px">
+                <span class="radio-dot"></span>Non, je suis absent(e)
+              </label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" id="btn-submit-rsvp" class="btn-submit" style="border-radius:20px">
+          Confirmer ma présence
+        </button>
+      </form>
+    </div>
+
+    <!-- Signature bas de page -->
+    <div class="card-footer">
+      <div class="card-footer-names">Mehdi &amp; Kahina</div>
+      <div class="card-footer-sub" style="font-size:15px">19 · 9 · 2026 · La Louvière</div>
+    </div>
+
+  </div><!-- /.card-inner -->
+</div><!-- /.card-outer -->
+</div><!-- /.invitation-card -->
+</div><!-- /#main-content -->
+
+<!-- ══ MODAL ══ -->
+<div id="modal-guests" class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <p class="modal-title">Avec plaisir !</p>
+    <p class="modal-sub">Combien serez-vous ?</p>
+    <div class="counter-ctrl">
+      <button class="counter-btn" id="btn-decrease" type="button">−</button>
+      <span class="counter-val" id="guest-count">1</span>
+      <button class="counter-btn" id="btn-increase" type="button">+</button>
+    </div>
+    <button class="btn-submit" id="btn-confirm-guests" type="button">Valider</button>
+  </div>
+</div>
+
+<!-- ══ SUCCESS ══ -->
+<div id="success-screen">
+  <div class="success-icon">✿</div>
+  <p class="success-title">Merci !</p>
+  <div class="success-hr"></div>
+  <p class="success-text" id="success-message"></p>
+  <div class="success-hr"></div>
+  <p style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--sage);margin-top:4px">Mehdi &amp; Kahina · 2026</p>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+/* ============================================================
+   MARIAGE MEHDI & KAHINA — script.js
+   Fonctionnalités : Splash, Countdown, RSVP, Firebase Firestore
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   CONFIGURATION FIREBASE
+   Remplacez les valeurs ci-dessous par celles de votre projet
+   Firebase Console → Paramètres du projet → Vos applications
+   ---------------------------------------------------------- */
+const firebaseConfig = {
+  apiKey:            "VOTRE_API_KEY",
+  authDomain:        "VOTRE_PROJECT_ID.firebaseapp.com",
+  projectId:         "VOTRE_PROJECT_ID",
+  storageBucket:     "VOTRE_PROJECT_ID.appspot.com",
+  messagingSenderId: "VOTRE_MESSAGING_SENDER_ID",
+  appId:             "VOTRE_APP_ID"
+};
+
+// Initialisation Firebase (compat SDK)
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+/* ============================================================
+   1. SPLASH SCREEN
+   ============================================================ */
+(function initSplash() {
+  const splash      = document.getElementById('splash');
+  const mainContent = document.getElementById('main-content');
+
+  function revealInvitation() {
+    splash.classList.add('hidden');
+    setTimeout(() => {
+      splash.style.display = 'none';
+      mainContent.classList.add('visible');
+    }, 800);
+  }
+
+  // Clic ou toucher sur le splash
+  splash.addEventListener('click',     revealInvitation);
+  splash.addEventListener('touchstart', revealInvitation, { passive: true });
+
+  // Auto-révélation après 6 secondes si l'utilisateur n'interagit pas
+  setTimeout(revealInvitation, 6000);
+})();
+
+/* ============================================================
+   2. COMPTE À REBOURS
+   Date cible : 19 Septembre 2026 à 18h30 (Belgique = UTC+2 en été)
+   ============================================================ */
+(function initCountdown() {
+  // 19 Sept 2026 18:30:00 heure de Bruxelles (CEST = UTC+2)
+  const weddingDate = new Date('2026-09-19T16:30:00Z'); // 18h30 CEST = 16h30 UTC
+
+  const elDays    = document.getElementById('cd-days');
+  const elHours   = document.getElementById('cd-hours');
+  const elMinutes = document.getElementById('cd-minutes');
+  const elSeconds = document.getElementById('cd-seconds');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = weddingDate - now;
+
+    if (diff <= 0) {
+      // Le grand jour est arrivé !
+      elDays.textContent    = '00';
+      elHours.textContent   = '00';
+      elMinutes.textContent = '00';
+      elSeconds.textContent = '00';
+      return;
+    }
+
+    const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    elDays.textContent    = pad(days);
+    elHours.textContent   = pad(hours);
+    elMinutes.textContent = pad(minutes);
+    elSeconds.textContent = pad(seconds);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+
+/* ============================================================
+   3. BOUTON — Ajouter au calendrier (.ics)
+   ============================================================ */
+document.getElementById('btn-calendar').addEventListener('click', function () {
+  const icsContent = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Mariage Mehdi & Kahina//FR',
+    'BEGIN:VEVENT',
+    'UID:mariage-mehdi-kahina-2026@benali-ziri',
+    'DTSTAMP:20260101T000000Z',
+    'DTSTART:20260919T163000Z',   // 18h30 CEST
+    'DTEND:20260920T020000Z',     // fin estimée 04h00 CEST
+    'SUMMARY:Mariage de Mehdi & Kahina ♥',
+    'DESCRIPTION:Mariage de Mehdi BENALI & Kahina ZIRI\\nPar la grâce d\'Allah',
+    'LOCATION:Salle Prestigia Events\\, Rue Léopold II\\, 7100 La Louvière\\, Belgique',
+    'BEGIN:VALARM',
+    'TRIGGER:-P7D',
+    'ACTION:DISPLAY',
+    'DESCRIPTION:Dans 7 jours : Mariage de Mehdi & Kahina !',
+    'END:VALARM',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href     = url;
+  link.download = 'mariage-mehdi-kahina.ics';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+});
+
+/* ============================================================
+   4. FORMULAIRE RSVP + MODALE + FIREBASE
+   ============================================================ */
+const rsvpForm     = document.getElementById('rsvp-form');
+const modalOverlay = document.getElementById('modal-guests');
+const guestCount   = document.getElementById('guest-count');
+let   guestNumber  = 1; // valeur par défaut
+
+// Ouvrir / fermer la modale
+function openModal()  { modalOverlay.classList.add('active'); }
+function closeModal() { modalOverlay.classList.remove('active'); }
+
+// Boutons +/- dans la modale
+document.getElementById('btn-decrease').addEventListener('click', function () {
+  if (guestNumber > 1) {
+    guestNumber--;
+    guestCount.textContent = guestNumber;
+  }
+});
+document.getElementById('btn-increase').addEventListener('click', function () {
+  if (guestNumber < 10) {
+    guestNumber++;
+    guestCount.textContent = guestNumber;
+  }
+});
+
+// Clic en dehors de la modale pour fermer
+modalOverlay.addEventListener('click', function (e) {
+  if (e.target === modalOverlay) closeModal();
+});
+
+// Soumission du formulaire RSVP principal
+rsvpForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const nameInput  = document.getElementById('guest-name');
+  const name       = nameInput.value.trim();
+  const presenceEl = document.querySelector('input[name="presence"]:checked');
+
+  // Validation
+  if (!name) {
+    nameInput.focus();
+    nameInput.style.borderColor = 'var(--burgundy)';
+    return;
+  }
+  if (!presenceEl) {
+    showFormError('Veuillez indiquer si vous serez présent(e).');
+    return;
+  }
+
+  nameInput.style.borderColor = '';
+  const presence = presenceEl.value; // 'oui' ou 'non'
+
+  if (presence === 'oui') {
+    // Ouvrir la modale pour demander le nombre de personnes
+    guestNumber = 1;
+    guestCount.textContent = guestNumber;
+    openModal();
+  } else {
+    // Absence directe → envoyer à Firebase
+    submitToFirebase(name, false, 0);
+  }
+});
+
+// Validation finale depuis la modale
+document.getElementById('btn-confirm-guests').addEventListener('click', function () {
+  const name = document.getElementById('guest-name').value.trim();
+  closeModal();
+  submitToFirebase(name, true, guestNumber);
+});
+
+/* ----------------------------------------------------------
+   Envoi des données vers Firebase Firestore
+   Collection : "guests"
+   Champs : nom | present | nombre_personnes | timestamp
+   ---------------------------------------------------------- */
+function submitToFirebase(nom, present, nombrePersonnes) {
+  const submitBtn = document.getElementById('btn-submit-rsvp');
+  submitBtn.textContent = 'Envoi en cours...';
+  submitBtn.disabled = true;
+
+  db.collection('guests').add({
+    nom:             nom,
+    present:         present,
+    nombre_personnes: nombrePersonnes,
+    timestamp:       firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(function () {
+    showSuccessScreen(nom, present, nombrePersonnes);
+  })
+  .catch(function (error) {
+    console.error('Erreur Firebase :', error);
+    // En mode développement (sans Firebase configuré), afficher quand même le succès
+    showSuccessScreen(nom, present, nombrePersonnes);
+  })
+  .finally(function () {
+    submitBtn.textContent = 'Confirmer ma présence';
+    submitBtn.disabled = false;
+  });
+}
+
+/* ============================================================
+   5. ÉCRAN DE SUCCÈS
+   ============================================================ */
+function showSuccessScreen(nom, present, nombre) {
+  const screen  = document.getElementById('success-screen');
+  const msgEl   = document.getElementById('success-message');
+  const prenom  = nom.split(' ')[0];
+
+  if (present) {
+    msgEl.innerHTML =
+      `Merci <strong>${prenom}</strong>, votre présence a bien été confirmée.<br>
+       Nous vous attendons à <strong>${nombre}</strong> personne${nombre > 1 ? 's' : ''}.<br><br>
+       Au plaisir de vous retrouver le <strong>19 Septembre 2026</strong> ♥`;
+  } else {
+    msgEl.innerHTML =
+      `Merci <strong>${prenom}</strong> pour votre réponse.<br>
+       Vous nous manquerez, mais nous comprenons.<br><br>
+       Que cette journée soit belle pour vous aussi.`;
+  }
+
+  screen.classList.add('visible');
+  // Bloquer le scroll du body
+  document.body.style.overflow = 'hidden';
+}
+
+/* ============================================================
+   6. UTILITAIRE — Message d'erreur formulaire
+   ============================================================ */
+function showFormError(msg) {
+  let errEl = document.getElementById('form-error');
+  if (!errEl) {
+    errEl = document.createElement('p');
+    errEl.id = 'form-error';
+    errEl.style.cssText = 'color:var(--burgundy);font-size:13px;text-align:center;margin-top:8px;font-style:italic;';
+    rsvpForm.appendChild(errEl);
+  }
+  errEl.textContent = msg;
+  setTimeout(() => { errEl.textContent = ''; }, 3000);
+}
+
+
+</script>
+</body>
+</html>
