@@ -449,6 +449,8 @@
   /* ============================================================
      CONNEXION
      ============================================================ */
+  const ADMIN_SESSION_KEY = 'mehdi-admin-session';
+  const ADMIN_SESSION_DURATION_MS = 5 * 60 * 60 * 1000;
   const loginScreen  = document.getElementById('login-screen');
   const dashboard    = document.getElementById('dashboard');
   const loginError   = document.getElementById('login-error');
@@ -460,12 +462,53 @@
     if (e.key === 'Enter') tryLogin();
   });
 
+  function saveAdminSession() {
+    localStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify({
+      expiresAt: Date.now() + ADMIN_SESSION_DURATION_MS
+    }));
+  }
+
+  function clearAdminSession() {
+    localStorage.removeItem(ADMIN_SESSION_KEY);
+  }
+
+  function hasValidAdminSession() {
+    const raw = localStorage.getItem(ADMIN_SESSION_KEY);
+    if (!raw) return false;
+
+    try {
+      const session = JSON.parse(raw);
+      if (session.expiresAt > Date.now()) return true;
+    } catch (error) {
+      console.warn('Session admin invalide :', error);
+    }
+
+    clearAdminSession();
+    return false;
+  }
+
+  function openDashboard() {
+    loginScreen.style.display = 'none';
+    dashboard.classList.add('visible');
+    initDashboard();
+  }
+
+  function closeDashboard() {
+    if (unsubscribe) {
+      unsubscribe();
+      unsubscribe = null;
+    }
+
+    dashboard.classList.remove('visible');
+    loginScreen.style.display = 'flex';
+    passwordInput.value = '';
+  }
+
   function tryLogin() {
     const val = passwordInput.value;
     if (val === ADMIN_PASSWORD) {
-      loginScreen.style.display = 'none';
-      dashboard.classList.add('visible');
-      initDashboard();
+      saveAdminSession();
+      openDashboard();
     } else {
       loginError.textContent = 'Mot de passe incorrect.';
       passwordInput.classList.add('error');
@@ -478,16 +521,16 @@
   }
 
   document.getElementById('btn-logout').addEventListener('click', function() {
-    if (unsubscribe) unsubscribe(); // arrêter le listener temps réel
-    dashboard.classList.remove('visible');
-    loginScreen.style.display = 'flex';
-    passwordInput.value = '';
+    clearAdminSession();
+    closeDashboard();
   });
 
   /* ============================================================
      TABLEAU DE BORD — Données temps réel
      ============================================================ */
   function initDashboard() {
+    if (unsubscribe) unsubscribe();
+
     // Écoute en temps réel la collection "guests"
     unsubscribe = db.collection('guests')
       .orderBy('timestamp', 'desc')
@@ -586,6 +629,10 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  if (hasValidAdminSession()) {
+    openDashboard();
   }
 </script>
 </body>
