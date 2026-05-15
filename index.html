@@ -655,7 +655,27 @@ body {
   .name-amp { font-size:40px; }
   .cd-num { width:52px; }
 }
-  </style>
+  
+/* ── PETALS ── */
+.petal {
+  position: fixed;
+  top: -10vh;
+  z-index: 999; /* behind modal but above content */
+  pointer-events: none;
+  border-radius: 15px 0 15px 0;
+}
+@keyframes fall {
+  0% { top: -10vh; opacity: 0; }
+  10% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 110vh; opacity: 0; }
+}
+@keyframes sway {
+  0% { transform: translateX(-40px) rotate(0deg); }
+  100% { transform: translateX(40px) rotate(360deg); }
+}
+</style>
+
 </head>
 <body>
 
@@ -1147,6 +1167,46 @@ function showFormError(msg) {
 }
 
 
+
+/* ============================================================
+   7. PETALES TOMBANTES
+   ============================================================ */
+(function initPetals() {
+  // Couleurs: bordeaux clair, or clair, sauge clair, blanc cassé
+  const colors = ['rgba(122,61,74,0.3)', 'rgba(184,149,62,0.3)', 'rgba(107,122,90,0.3)', 'rgba(255,255,255,0.6)'];
+  
+  function createPetal() {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    
+    const size = Math.random() * 8 + 10; // 10px a 18px
+    petal.style.width = size + 'px';
+    petal.style.height = size + 'px';
+    petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+    petal.style.left = Math.random() * 100 + 'vw';
+    
+    const fallDuration = Math.random() * 10 + 8; // 8s a 18s (lent et gracieux)
+    const swayDuration = Math.random() * 4 + 3;  // 3s a 7s
+    
+    petal.style.animation = `fall ${fallDuration}s linear forwards, sway ${swayDuration}s ease-in-out infinite alternate`;
+    
+    document.body.appendChild(petal);
+    
+    setTimeout(() => {
+      petal.remove();
+    }, fallDuration * 1000);
+  }
+
+  // Apparition initiale de quelques petales pour pas que l'ecran soit vide
+  for(let i=0; i<5; i++) {
+    setTimeout(createPetal, Math.random() * 3000);
+  }
+
+  // Creer une petale regulierement (800ms = leger)
+  setInterval(createPetal, 800);
+})();
+
 </script>
 </body>
+
 </html>
