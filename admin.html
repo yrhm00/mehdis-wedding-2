@@ -329,7 +329,23 @@
       .responses-table th:nth-child(3),
       .responses-table td:nth-child(3) { display: none; }
     }
+
+    .btn-delete {
+      background: transparent;
+      border: 1px solid var(--burgundy);
+      color: var(--burgundy);
+      padding: 4px 8px;
+      font-size: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .btn-delete:hover {
+      background: var(--burgundy);
+      color: var(--white);
+    }
   </style>
+
 </head>
 <body>
 
@@ -596,6 +612,7 @@
           <td>${badge}</td>
           <td>${date}</td>
           <td style="text-align:center">${nb}</td>
+          <td style="text-align:center"><button class="btn-delete" onclick="deleteGuest('${doc.id}')">Supprimer</button></td>
         </tr>`;
     });
 
@@ -607,6 +624,7 @@
             <th>Statut</th>
             <th>Date de réponse</th>
             <th style="text-align:center">Personnes</th>
+            <th style="text-align:center">Actions</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -631,7 +649,21 @@
       .replace(/"/g, '&quot;');
   }
 
+
+  /* ============================================================
+     SUPPRESSION INVITÉ
+     ============================================================ */
+  window.deleteGuest = function(id) {
+    if (confirm("Voulez-vous vraiment supprimer cet invité ?")) {
+      db.collection('guests').doc(id).delete().catch(function(err) {
+        console.error("Erreur lors de la suppression:", err);
+        alert("Erreur lors de la suppression.");
+      });
+    }
+  };
+
   if (hasValidAdminSession()) {
+
     openDashboard();
   }
 </script>
