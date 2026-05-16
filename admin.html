@@ -608,7 +608,10 @@
 
       rows += `
         <tr>
-          <td><strong>${escapeHtml(d.nom || '—')}</strong></td>
+          <td>
+            <strong>${escapeHtml(d.nom || '—')}</strong>
+            ${d.noms_accompagnants ? `<br><span style="font-size:11px; color:var(--text-lt)">+ ${escapeHtml(d.noms_accompagnants)}</span>` : ''}
+          </td>
           <td>${badge}</td>
           <td>${date}</td>
           <td style="text-align:center">${nb}</td>

@@ -838,6 +838,7 @@ body {
       <span class="counter-val" id="guest-count">1</span>
       <button class="counter-btn" id="btn-increase" type="button">+</button>
     </div>
+    <div id="companions-container" style="display:none; text-align:left; margin-bottom: 20px; max-height: 160px; overflow-y: auto;"></div>
     <button class="btn-submit" id="btn-confirm-guests" type="button">Valider</button>
   </div>
 </div>
@@ -1031,17 +1032,53 @@ let   guestNumber  = 1; // valeur par défaut
 function openModal()  { modalOverlay.classList.add('active'); }
 function closeModal() { modalOverlay.classList.remove('active'); }
 
+function updateCompanionsFields() {
+  const container = document.getElementById('companions-container');
+  if (!container) return;
+  if (guestNumber > 1) {
+    container.style.display = 'block';
+    const currentInputs = container.querySelectorAll('.companion-input').length;
+    const targetInputs = guestNumber - 1;
+    
+    if (currentInputs < targetInputs) {
+      for (let i = currentInputs; i < targetInputs; i++) {
+        const div = document.createElement('div');
+        div.className = 'form-grp';
+        div.style.marginBottom = '10px';
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'form-inp companion-input';
+        input.placeholder = `Prénom et Nom de l'accompagnant ${i + 1}`;
+        input.style.borderRadius = '20px';
+        input.style.padding = '10px 16px';
+        input.style.fontSize = '14px';
+        div.appendChild(input);
+        container.appendChild(div);
+      }
+    } else if (currentInputs > targetInputs) {
+      for (let i = currentInputs; i > targetInputs; i--) {
+        container.removeChild(container.lastChild);
+      }
+    }
+  } else {
+    container.style.display = 'none';
+    container.innerHTML = '';
+  }
+}
+
 // Boutons +/- dans la modale
 document.getElementById('btn-decrease').addEventListener('click', function () {
   if (guestNumber > 1) {
     guestNumber--;
     guestCount.textContent = guestNumber;
+    updateCompanionsFields();
   }
 });
 document.getElementById('btn-increase').addEventListener('click', function () {
   if (guestNumber < 10) {
     guestNumber++;
     guestCount.textContent = guestNumber;
+    updateCompanionsFields();
   }
 });
 
@@ -1076,18 +1113,28 @@ rsvpForm.addEventListener('submit', function (e) {
     // Ouvrir la modale pour demander le nombre de personnes
     guestNumber = 1;
     guestCount.textContent = guestNumber;
+    updateCompanionsFields();
     openModal();
   } else {
     // Absence directe → envoyer à Firebase
-    submitToFirebase(name, false, 0);
+    submitToFirebase(name, false, 0, "");
   }
 });
 
 // Validation finale depuis la modale
 document.getElementById('btn-confirm-guests').addEventListener('click', function () {
   const name = document.getElementById('guest-name').value.trim();
+  const companionInputs = document.querySelectorAll('.companion-input');
+  let companions = [];
+  companionInputs.forEach(input => {
+    if (input.value.trim() !== '') {
+      companions.push(input.value.trim());
+    }
+  });
+  const noms_accompagnants = companions.join(', ');
+  
   closeModal();
-  submitToFirebase(name, true, guestNumber);
+  submitToFirebase(name, true, guestNumber, noms_accompagnants);
 });
 
 /* ----------------------------------------------------------
@@ -1095,7 +1142,7 @@ document.getElementById('btn-confirm-guests').addEventListener('click', function
    Collection : "guests"
    Champs : nom | present | nombre_personnes | timestamp
    ---------------------------------------------------------- */
-function submitToFirebase(nom, present, nombrePersonnes) {
+function submitToFirebase(nom, present, nombrePersonnes, nomsAccompagnants = "") {
   const submitBtn = document.getElementById('btn-submit-rsvp');
   submitBtn.textContent = 'Envoi en cours...';
   submitBtn.disabled = true;
@@ -1111,6 +1158,7 @@ function submitToFirebase(nom, present, nombrePersonnes) {
     nom:             nom,
     present:         present,
     nombre_personnes: nombrePersonnes,
+    noms_accompagnants: nomsAccompagnants,
     timestamp:       firebase.firestore.FieldValue.serverTimestamp()
   })
   .then(function () {
