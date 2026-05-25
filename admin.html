@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin — Union Larissa &amp; Nicolas</title>
+  <title>Admin — Mariage Mehdi &amp; Kahina</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
     /* ---------- Variables & Reset ---------- */
     :root {
-      --cream:     #fffaf4;
-      --cream-dk:  #f1dfcd;
+      --cream:     #faf8f3;
+      --cream-dk:  #ede8de;
       --text:      #2c2a24;
       --text-lt:   #5a5650;
-      --sage:      #7d9186;
-      --sage-dk:   #5f756b;
-      --sage-lt:   #9aa99f;
-      --burgundy:  #9c4b4f;
-      --gold:      #b9872d;
+      --sage:      #6b7a5a;
+      --sage-dk:   #4d5a3e;
+      --sage-lt:   #8a9a78;
+      --burgundy:  #7a3d4a;
+      --gold:      #b8953e;
       --white:     #ffffff;
       --green-ok:  #3a7a4a;
       --red-no:    #8c3a44;
@@ -355,7 +355,7 @@
 <div id="login-screen">
   <div class="login-box">
     <div class="login-title">Admin</div>
-    <p class="login-subtitle">Union Larissa &amp; Nicolas</p>
+    <p class="login-subtitle">Mariage Mehdi &amp; Kahina</p>
 
     <input
       type="password"
@@ -377,8 +377,8 @@
 
   <div class="dash-header">
     <div>
-      <div class="dash-header-title">Larissa &amp; Nicolas</div>
-      <div class="dash-header-sub">Tableau de bord · 29 Août 2026</div>
+      <div class="dash-header-title">Mehdi &amp; Kahina</div>
+      <div class="dash-header-sub">Tableau de bord · 19 Septembre 2026</div>
     </div>
     <button class="btn-logout" id="btn-logout">Déconnexion</button>
   </div>
@@ -465,8 +465,7 @@
   /* ============================================================
      CONNEXION
      ============================================================ */
-  const RSVP_COLLECTION = 'larissa_nicolas_guests';
-  const ADMIN_SESSION_KEY = 'larissa-nicolas-admin-session';
+  const ADMIN_SESSION_KEY = 'mehdi-admin-session';
   const ADMIN_SESSION_DURATION_MS = 5 * 60 * 60 * 1000;
   const loginScreen  = document.getElementById('login-screen');
   const dashboard    = document.getElementById('dashboard');
@@ -548,8 +547,8 @@
   function initDashboard() {
     if (unsubscribe) unsubscribe();
 
-    // Écoute en temps réel la collection RSVP de cette invitation.
-    unsubscribe = db.collection(RSVP_COLLECTION)
+    // Écoute en temps réel la collection "guests"
+    unsubscribe = db.collection('guests')
       .orderBy('timestamp', 'desc')
       .onSnapshot(function(snapshot) {
         renderDashboard(snapshot.docs);
@@ -659,7 +658,7 @@
      ============================================================ */
   window.deleteGuest = function(id) {
     if (confirm("Voulez-vous vraiment supprimer cet invité ?")) {
-      db.collection(RSVP_COLLECTION).doc(id).delete().catch(function(err) {
+      db.collection('guests').doc(id).delete().catch(function(err) {
         console.error("Erreur lors de la suppression:", err);
         alert("Erreur lors de la suppression.");
       });

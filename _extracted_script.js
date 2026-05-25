@@ -1,5 +1,5 @@
 /* ============================================================
-   UNION LARISSA & NICOLAS — script.js
+   MARIAGE MEHDI & KAHINA — script.js
    Fonctionnalités : Splash, Countdown, RSVP, Firebase Firestore
    ============================================================ */
 
@@ -46,11 +46,11 @@ const db = firebase.firestore();
 
 /* ============================================================
    2. COMPTE À REBOURS
-   Date cible : 29 Août 2026
+   Date cible : 19 Septembre 2026 à 18h30 (Belgique = UTC+2 en été)
    ============================================================ */
 (function initCountdown() {
-  // 29 août 2026 à minuit, heure de Bruxelles (CEST = UTC+2)
-  const weddingDate = new Date('2026-08-28T22:00:00Z');
+  // 19 Sept 2026 18:30:00 heure de Bruxelles (CEST = UTC+2)
+  const weddingDate = new Date('2026-09-19T16:30:00Z'); // 18h30 CEST = 16h30 UTC
 
   const elDays    = document.getElementById('cd-days');
   const elHours   = document.getElementById('cd-hours');
@@ -94,18 +94,19 @@ document.getElementById('btn-calendar').addEventListener('click', function () {
   const icsContent = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Union Larissa et Nicolas//FR',
+    'PRODID:-//Mariage Mehdi & Kahina//FR',
     'BEGIN:VEVENT',
-    'UID:union-larissa-nicolas-2026@save-the-date',
+    'UID:mariage-mehdi-kahina-2026@benali-ziri',
     'DTSTAMP:20260101T000000Z',
-    'DTSTART;VALUE=DATE:20260829',
-    'DTEND;VALUE=DATE:20260830',
-    'SUMMARY:Union de Larissa et Nicolas',
-    'DESCRIPTION:Save the Date - Larissa et Nicolas vous invitent à leur union.',
+    'DTSTART:20260919T163000Z',   // 18h30 CEST
+    'DTEND:20260920T020000Z',     // fin estimée 04h00 CEST
+    'SUMMARY:Mariage de Mehdi & Kahina ♥',
+    'DESCRIPTION:Mariage de Mehdi BENALI & Kahina ZIRI\\nPar la grâce d\'Allah',
+    'LOCATION:Salle Prestigia Events\\, Rue Léopold II\\, 7100 La Louvière\\, Belgique',
     'BEGIN:VALARM',
-    'TRIGGER:-P14D',
+    'TRIGGER:-P7D',
     'ACTION:DISPLAY',
-    'DESCRIPTION:Dans 14 jours : union de Larissa et Nicolas',
+    'DESCRIPTION:Dans 7 jours : Mariage de Mehdi & Kahina !',
     'END:VALARM',
     'END:VEVENT',
     'END:VCALENDAR'
@@ -115,7 +116,7 @@ document.getElementById('btn-calendar').addEventListener('click', function () {
   const url  = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href     = url;
-  link.download = 'union-larissa-nicolas.ics';
+  link.download = 'mariage-mehdi-kahina.ics';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -195,7 +196,7 @@ document.getElementById('btn-confirm-guests').addEventListener('click', function
 
 /* ----------------------------------------------------------
    Envoi des données vers Firebase Firestore
-   Collection : "larissa_nicolas_guests"
+   Collection : "guests"
    Champs : nom | present | nombre_personnes | timestamp
    ---------------------------------------------------------- */
 function submitToFirebase(nom, present, nombrePersonnes) {
@@ -203,7 +204,7 @@ function submitToFirebase(nom, present, nombrePersonnes) {
   submitBtn.textContent = 'Envoi en cours...';
   submitBtn.disabled = true;
 
-  db.collection('larissa_nicolas_guests').add({
+  db.collection('guests').add({
     nom:             nom,
     present:         present,
     nombre_personnes: nombrePersonnes,
@@ -235,7 +236,7 @@ function showSuccessScreen(nom, present, nombre) {
     msgEl.innerHTML =
       `Merci <strong>${prenom}</strong>, votre présence a bien été confirmée.<br>
        Nous vous attendons à <strong>${nombre}</strong> personne${nombre > 1 ? 's' : ''}.<br><br>
-       Au plaisir de vous retrouver le <strong>29 août 2026</strong> ♥`;
+       Au plaisir de vous retrouver le <strong>19 Septembre 2026</strong> ♥`;
   } else {
     msgEl.innerHTML =
       `Merci <strong>${prenom}</strong> pour votre réponse.<br>
@@ -262,3 +263,4 @@ function showFormError(msg) {
   errEl.textContent = msg;
   setTimeout(() => { errEl.textContent = ''; }, 3000);
 }
+
